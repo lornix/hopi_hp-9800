@@ -15,7 +15,8 @@ CFLAGS=
 CFLAGS+=-ggdb3
 #
 # but no optimization by default
-CFLAGS+=-O0
+#CFLAGS+=-O0
+CFLAGS+=-O2
 #
 # warn about lots of things
 CFLAGS+=-Wall -Wextra -Wunused
