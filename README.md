@@ -3,13 +3,13 @@ Simple code to read data from HOPI HP-9800 Power Meter.  Need libmodbus.  Basic 
 
 Received my new HOPI HP-9800 Power Meter yesterday.  It included a micro-usb serial port, claiming the ability to read the data from the meter.
 
-Of course, it wasn't simple serial output, it's using the ModBus-RTU protocol, evidently because it wants to be a 'Professional Grade' meter.  Bleah! Whatever!  There is very little information on the Hopi HP-9800 available on the web, like, surprisingly little.  Nothing really more than images of the single-page data sheet included with the device in the box.  And THAT was sparse too!
+Of course, it wasn't simple serial output, it's using the [ModBus-RTU](https://en.wikipedia.org/wiki/Modbus) protocol, evidently because it wants to be a 'Professional Grade' meter.  Bleah! Whatever!  There is very little information on the Hopi HP-9800 available on the web, like, surprisingly little.  Nothing really more than images of the single-page data sheet included with the device in the box.  And THAT was sparse too!
 
-I have now read extensively on the ModBus Protocol, it's interesting, a little dated, and a little slow, but rather simple to implement (At least it doesn't involve XML!).  I'm using the excellent [libmodbus library](https://github.com/stephane/libmodbus) by [Stéphane Raimbault](https://github.com/stephane), available in most Linux distributions, and also at [libmodbus.org](https://libmodbus.org), including documentation.
+I have now read extensively on the [ModBus](https://en.wikipedia.org/wiki/Modbus) Protocol, it's interesting, a little dated, and a little slow, but rather simple to implement (At least it doesn't involve XML!).  I'm using the excellent [libmodbus library](https://github.com/stephane/libmodbus) by [Stéphane Raimbault](https://github.com/stephane), available in most Linux distributions, and also at [libmodbus.org](https://libmodbus.org), including documentation.
 
 You'll need to install the `libmodbus-dev` and `libmodbus*` packages (I'm using v3.1.4 today) from your distro, or clone, compile and install Stéphane's library.
 
-While I have plans for multiple options and increased usability of this tool, at the moment, it's hard-coded to use /dev/ttyUSB0, so adjust the source if your meter registers as a different port.  Should work for Windows users too, just using `//./COM??` as the port string.
+While I have plans for multiple options and increased usability of this tool, at the moment, it's hard-coded to use `/dev/ttyUSB0`, so adjust the source if your meter registers as a different port.  Should work for Windows users too, just using `//./COM??` as the port string.
 
 My uber-generic Makefile® should be easily readable to tweak if you desire, perhaps I'll autoconf the source at some point, but for the moment, it's quite sufficent.  Compiling is as expected:
 
