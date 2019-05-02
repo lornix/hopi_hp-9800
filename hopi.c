@@ -48,31 +48,6 @@ int main()
         return EXIT_FAILURE;
     }
 
-#ifdef TESTING
-    uint8_t req[]={0x01,0x2b,0x0e,0x01,0x00};
-    uint8_t resp[MODBUS_MAX_ADU_LENGTH];
-
-    rc=modbus_send_raw_request(ctx,req,sizeof(req));
-    printf("send_raw_request=%d\n",rc);
-    if (rc<0) {
-        fprintf(stderr,"%s\n",modbus_strerror(errno));
-        modbus_close(ctx);
-        modbus_free(ctx);
-        return EXIT_FAILURE;
-    }
-
-    rc=modbus_receive_confirmation(ctx,resp);
-    printf("receive_confirmation=%d\n",rc);
-    if (rc<0) {
-        fprintf(stderr,"%s\n",modbus_strerror(errno));
-    } else {
-        for (int i=0; i<rc; ++i) {
-            printf("%02x ",resp[i]);
-        }
-        printf("\n");
-    }
-#endif
-
     printf("%10.5f W   Active Power\n",modbus_get_float_dcba(dat));
     printf("%10.5f A   RMS Current\n",modbus_get_float_dcba(dat+2));
     printf("%10.5f V   Voltage\n",modbus_get_float_dcba(dat+4));
