@@ -48,6 +48,9 @@ int main()
         return EXIT_FAILURE;
     }
 
+    modbus_close(ctx);
+    modbus_free(ctx);
+
     printf("%10.5f W   Active Power\n",modbus_get_float_dcba(dat));
     printf("%10.5f A   RMS Current\n",modbus_get_float_dcba(dat+2));
     printf("%10.5f V   Voltage\n",modbus_get_float_dcba(dat+4));
@@ -59,9 +62,6 @@ int main()
     printf("%10.5f Hrs Load Time\n",modbus_get_float_dcba(dat+16)/100.0f);
     printf("%10d Hrs Work Hours per Day\n",dat[18]);
     printf("%10d     Device Address\n",dat[19]);
-
-    modbus_close(ctx);
-    modbus_free(ctx);
 
     return EXIT_SUCCESS;
 }
