@@ -59,7 +59,8 @@ int main()
     printf("%10.5f KWH Annual Power Consumption\n",modbus_get_float_dcba(dat+10));
     printf("%10.5f KWH Active Consumption\n",modbus_get_float_dcba(dat+12));
     printf("%10.5f KWH Reactive Consumption\n",modbus_get_float_dcba(dat+14));
-    printf("%10.5f Hrs Load Time\n",modbus_get_float_dcba(dat+16)/100.0f);
+    // convert Load_Time from minutes to hours by /60.0f
+    printf("%10.5f Hrs Load Time\n",modbus_get_float_dcba(dat+16)/60.0f);
     printf("%10d Hrs Work Hours per Day\n",dat[18]);
     printf("%10d     Device Address\n",dat[19]);
 
